@@ -77,3 +77,26 @@ Foreign Key (Id_Role) References Role (Id);
 Alter Table Role_Detail
 Add Constraint Fk_Role_Detail_Sec_Object
 Foreign Key (Id_Sec_Object) References Sec_Object (Id);
+
+
+Create Procedure SP_Insert_Allowed_Action
+
+@Name Varchar(60),
+@Description Varchar (50)
+
+As
+	Begin Transaction
+		Begin Try
+			Insert Into Allowed_Action (Name,Description)
+			Values (@Name, @Description)
+		Commit
+		End Try
+
+		Begin Catch
+		Print 'Error en la Transaccion'
+		Rollback
+		End Catch;
+
+Select * from Allowed_Action;
+
+Execute SP_Insert_Allowed_Action 'Mostrar','Permiso SQL para mostrar datos';
