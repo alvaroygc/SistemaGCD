@@ -33,11 +33,11 @@ namespace SistemaGCD.Controllers
 
         [HttpGet]
         [Route("getById")]
-        public ActionResult<List<Allowed_Action>> Get (int Id)
+        public ActionResult<List<Allowed_Action>> Get (int id)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
             Allowed_ActionDA allowed_Action = new Allowed_ActionDA(db);
-            return allowed_Action.get(Id);
+            return allowed_Action.getById(id);
         }
 
         [HttpPost]
