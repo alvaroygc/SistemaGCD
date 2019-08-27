@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaGCD.Models.DataAccess;
@@ -20,8 +17,7 @@ namespace SistemaGCD.Controllers
         {
             provider = serviceProvider;
         }
-
-
+        
         [HttpGet]
         [Route("getAll")]
         public ActionResult<List<Allowed_Action>> Get()

@@ -51,6 +51,7 @@ Primary Key (Id_Role, Id_Allowed_Action, Id_Sec_Object)
 Create Table User_Role(
 Id_User Int Not Null,
 Id_Role Int Not Null,
+Created_On DateTime Default GetDate(),
 Primary Key  (Id_User, Id_Role)
 );
 

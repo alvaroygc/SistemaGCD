@@ -9,40 +9,40 @@ namespace SistemaGCD.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Object_TypeController : ControllerBase
+    public class RolesController : ControllerBase
     {
         private IServiceProvider provider;
 
-        public Object_TypeController (IServiceProvider serviceProvider)
+        public RolesController(IServiceProvider serviceProvider)
         {
             provider = serviceProvider;
         }
 
         [HttpGet]
         [Route("getAll")]
-        public ActionResult<List<Object_Type>> Get()
+        public ActionResult<List<Roles>> Get()
         {
             AppDB db = provider.GetService<AppDB>();
-            Object_TypeDA object_Type = new Object_TypeDA(db);
-            return object_Type.getAll();
+            RolesDA roles = new RolesDA(db);
+            return roles.getAll();
         }
-        
+
         [HttpGet]
         [Route("getById")]
-        public ActionResult<List<Object_Type>> Get (int id)
+        public ActionResult<List<Roles>> Get(int id)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_Type = new Object_TypeDA(db);
-            return object_Type.GetById(id);
+            RolesDA roles = new RolesDA(db);
+            return roles.getById(id);
         }
 
         [HttpPost]
         [Route("Create")]
-        public ActionResult<object> Create (Object_Type object_Type)
+        public ActionResult<object> Create(Roles roles)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_TypeDA = new Object_TypeDA(db);
-            var res = object_TypeDA.create(object_Type);
+            RolesDA rolesDA = new RolesDA(db);
+            var res = rolesDA.create(roles);
             return new
             {
                 result = res
@@ -51,11 +51,11 @@ namespace SistemaGCD.Controllers
 
         [HttpPost]
         [Route("Delete")]
-        public ActionResult<object> Delete(Object_Type object_Type)
+        public ActionResult<object> Delete(Roles roles)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_TypeDA = new Object_TypeDA(db);
-            var res = object_TypeDA.delete(object_Type);
+            RolesDA rolesDA = new RolesDA(db);
+            var res = rolesDA.delete(roles);
             return new
             {
                 result = res
@@ -64,11 +64,11 @@ namespace SistemaGCD.Controllers
 
         [HttpPost]
         [Route("Update")]
-        public ActionResult<object> Update(Object_Type object_Type)
+        public ActionResult<object> Update(Roles roles)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_TypeDA = new Object_TypeDA(db);
-            var res = object_TypeDA.update(object_Type);
+            RolesDA rolesDA = new RolesDA(db);
+            var res = rolesDA.update(roles);
             return new
             {
                 result = res

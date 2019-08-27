@@ -9,40 +9,40 @@ namespace SistemaGCD.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Object_TypeController : ControllerBase
+    public class Sec_ObjectsController : ControllerBase
     {
         private IServiceProvider provider;
 
-        public Object_TypeController (IServiceProvider serviceProvider)
+        public Sec_ObjectsController(IServiceProvider serviceProvider)
         {
             provider = serviceProvider;
         }
 
         [HttpGet]
         [Route("getAll")]
-        public ActionResult<List<Object_Type>> Get()
+        public ActionResult<List<Sec_Object>> Get()
         {
             AppDB db = provider.GetService<AppDB>();
-            Object_TypeDA object_Type = new Object_TypeDA(db);
-            return object_Type.getAll();
+            Sec_ObjectsDA sec_Objects= new Sec_ObjectsDA(db);
+            return sec_Objects.getAll();
         }
-        
+
         [HttpGet]
         [Route("getById")]
-        public ActionResult<List<Object_Type>> Get (int id)
+        public ActionResult<List<Sec_Object>> Get(int id)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_Type = new Object_TypeDA(db);
-            return object_Type.GetById(id);
+            Sec_ObjectsDA sec_Objects = new Sec_ObjectsDA(db);
+            return sec_Objects.getById(id);
         }
 
         [HttpPost]
         [Route("Create")]
-        public ActionResult<object> Create (Object_Type object_Type)
+        public ActionResult<object> Create(Sec_Object sec_Object)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_TypeDA = new Object_TypeDA(db);
-            var res = object_TypeDA.create(object_Type);
+            Sec_ObjectsDA sec_ObjectsDA = new Sec_ObjectsDA(db);
+            var res = sec_ObjectsDA.create(sec_Object);
             return new
             {
                 result = res
@@ -51,11 +51,11 @@ namespace SistemaGCD.Controllers
 
         [HttpPost]
         [Route("Delete")]
-        public ActionResult<object> Delete(Object_Type object_Type)
+        public ActionResult<object> Delete(Sec_Object sec_Object)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_TypeDA = new Object_TypeDA(db);
-            var res = object_TypeDA.delete(object_Type);
+            Sec_ObjectsDA sec_ObjectsDA = new Sec_ObjectsDA(db);
+            var res = sec_ObjectsDA.delete(sec_Object);
             return new
             {
                 result = res
@@ -64,11 +64,11 @@ namespace SistemaGCD.Controllers
 
         [HttpPost]
         [Route("Update")]
-        public ActionResult<object> Update(Object_Type object_Type)
+        public ActionResult<object> Update(Sec_Object sec_Object)
         {
             AppDB db = provider.GetRequiredService<AppDB>();
-            Object_TypeDA object_TypeDA = new Object_TypeDA(db);
-            var res = object_TypeDA.update(object_Type);
+            Sec_ObjectsDA sec_ObjectsDA = new Sec_ObjectsDA(db);
+            var res = sec_ObjectsDA.update(sec_Object);
             return new
             {
                 result = res
