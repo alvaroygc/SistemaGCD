@@ -55,6 +55,31 @@ Created_On DateTime Default GetDate(),
 Primary Key  (Id_User, Id_Role)
 );
 
+Create Table Suscription (
+Id Int Primary Key Not Null Identity,
+Name Varchar(60) Not Null,
+Description Varchar (60) Not Null,
+Number_Case Int Not null,
+Created_On Datetime Default Getdate()
+);
+
+
+
+Create Table Company(
+Id Int Primary Key Not Null Identity,
+Id_Suscription Int Not Null,
+Email Varchar(60) Not Null,
+Name Varchar(100) Not Null,
+Address Varchar(80) Not Null,
+Phone Int Not Null,
+Pass Varchar(80) Not Null,
+Created_On Datetime Default Getdate()
+);
+
+
+
+
+
 Alter Table User_Role
 Add Constraint FK_User_Role_User
 Foreign Key (Id_User) References [User] (Id);
@@ -79,25 +104,6 @@ Alter Table Role_Detail
 Add Constraint Fk_Role_Detail_Sec_Object
 Foreign Key (Id_Sec_Object) References Sec_Object (Id);
 
-
-Create Procedure SP_Insert_Allowed_Action
-
-@Name Varchar(60),
-@Description Varchar (50)
-
-As
-	Begin Transaction
-		Begin Try
-			Insert Into Allowed_Action (Name,Description)
-			Values (@Name, @Description)
-		Commit
-		End Try
-
-		Begin Catch
-		Print 'Error en la Transaccion'
-		Rollback
-		End Catch;
-
-Select * from Allowed_Action;
-
-Execute SP_Insert_Allowed_Action 'Mostrar','Permiso SQL para mostrar datos';
+Alter Table Company
+Add Constraint FK_Role_Detail_Id_Suscription
+Foreign Key (Id_Suscription) References Suscription (Id);
