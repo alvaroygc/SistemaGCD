@@ -47,6 +47,7 @@ namespace SistemaGCD
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }

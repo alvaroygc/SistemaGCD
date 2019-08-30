@@ -51,7 +51,7 @@ namespace SistemaGCD.Models.DataAccess
         public int delete (Object_Type object_Type)
         {
             db.Connection.Open();
-            var result = db.Connection.Execute(StoreProcedureNames.Object_Type.Delete, new { Id = object_Type.id }, commandType: CommandType.StoredProcedure);
+            var result = db.Connection.Execute(StoreProcedureNames.Object_Type.Delete, new { Id = object_Type.id}, commandType: CommandType.StoredProcedure);
             db.Connection.Close();
             return result;
         }

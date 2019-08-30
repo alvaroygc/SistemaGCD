@@ -6,7 +6,8 @@
 
   <ItemGroup>
     <Folder Include="General\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\assets\" />
+    <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
   <ItemGroup>
