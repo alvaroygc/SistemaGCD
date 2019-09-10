@@ -6,6 +6,7 @@ namespace SistemaGCD.Models.Entities
     {
         public int Id { get; set; }
         public int  Id_Suscription { get; set; }
+        public string Suscription_Name { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

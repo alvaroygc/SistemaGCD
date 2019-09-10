@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "Company.html",
       "environmentVariables": {
         "ConnectionString": "Server=ALVARO-PC;Database=SistemaGCDDB;Uid=alvaro;Pwd=C@lder0n",
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -21,7 +21,7 @@
     "SistemaGCD": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "Company.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
