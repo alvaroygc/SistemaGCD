@@ -16,11 +16,11 @@
 
     created: function () {
         var self = this;
-        self.getRoless();
+        self.getRoles();
     },
 
     methods: {
-        getRoless: function () {
+        getRoles: function () {
             fetch('./api/roles/getall')
                 .then(function (response) {
                     if (response.status !== 200) {
@@ -51,7 +51,7 @@
             app.modalVisibility = "none"
         },
 
-        validateRolesInput: function () {
+        validateActionInput: function () {
             app.inputErrors = []
             if (app.selectedRoles.name == '') {
                 app.inputErrors.push('El nombre no debe ser vacío!')
@@ -64,7 +64,7 @@
         saveEdit: function () {
             var res = ''
             //validar
-            //  app.validateRolesInput();
+            app.validateActionInput();
             if (app.inputErrors.length > 0) {
                 return;
             }
@@ -86,7 +86,7 @@
                 })
                 .then(function (data) {
                     app.closeModal()
-                    app.getRoless()
+                    app.getRoles()
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
@@ -102,7 +102,7 @@
                     app.closeModal()
                     return;
                 }
-                fetch('/api/roles/delete', {
+                fetch('/api/roles/Delete', {
                     method: 'post',
                     headers: {
                         "Content-Type": "application/json"

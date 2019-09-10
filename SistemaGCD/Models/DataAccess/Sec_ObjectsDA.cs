@@ -35,7 +35,7 @@ namespace SistemaGCD.Models.DataAccess
         public int create(Sec_Object sec_Object)
         {
             db.Connection.Open();
-            int result = db.Connection.Execute(StoreProcedureNames.Sec_Object.Create, new { Id_Object_Type = sec_Object.Id_Object_Type, Name = sec_Object.Name, Description = sec_Object.Description}, commandType: CommandType.StoredProcedure);
+            int result = db.Connection.Execute(StoreProcedureNames.Sec_Object.Create, new {Name = sec_Object.Name, Description = sec_Object.Description}, commandType: CommandType.StoredProcedure);
             db.Connection.Close();
             return result;
         }
@@ -43,7 +43,7 @@ namespace SistemaGCD.Models.DataAccess
         public int update(Sec_Object sec_Object)
         {
             db.Connection.Open();
-            int result = db.Connection.Execute(StoreProcedureNames.Sec_Object.Update, new { Id = sec_Object.Id, Id_Object_Type = sec_Object.Id_Object_Type, Name = sec_Object.Name, Description = sec_Object.Description }, commandType: CommandType.StoredProcedure);
+            int result = db.Connection.Execute(StoreProcedureNames.Sec_Object.Update, new { Id = sec_Object.Id, Name = sec_Object.Name, Description = sec_Object.Description }, commandType: CommandType.StoredProcedure);
             db.Connection.Close();
             return result;
         }

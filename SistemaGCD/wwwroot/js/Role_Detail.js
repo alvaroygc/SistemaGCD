@@ -3,10 +3,10 @@
     data: {
         modalVisibility: 'none',
         disabledButton: false,
-        actions: [],
+        details: [],
         selectedAction: {},
         editModAction: '',
-        gridActiom: '',
+        gridDetails: '',
         inputErrors: [],
         Objects: [],
         Roles: [],
@@ -19,14 +19,14 @@
 
     created: function () {
         var self = this;
-        self.getActions();
+        self.getDetails();
         self.getRole();
         self.getSec_Objects();
         self.getAllowed_Actions();
     },
 
     methods: {
-        getActions: function () {
+        getDetails: function () {
             fetch('./api/Role_Detail/getall')
                 .then(function (response) {
                     if (response.status !== 200) {
@@ -34,7 +34,7 @@
                         return;
                     }
                     response.json().then(function (data) {
-                        app.actions = data;
+                        app.details = data;
                     });
                 }
                 )
@@ -144,14 +144,14 @@
                 })
                 .then(function (data) {
                     app.closeModal()
-                    app.getActions()
+                    app.getDetails()
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
                 });
         },
 
-        DeleteAction: function (action) {
+        DeleteDetails: function (action) {
             app.modalVisibility = "block"
             app.selectedAction = Object.assign({}, action)
             Vue.nextTick(function () {
@@ -173,7 +173,7 @@
                     .then(function (data) {
                         //alert(data.result)
                         app.closeModal()
-                        app.getActions()
+                        app.getDetails()
                     })
                     .catch(function (error) {
                         console.log('Request failed', error);
