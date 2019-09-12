@@ -76,8 +76,28 @@ Pass Varchar(80) Not Null,
 Created_On Datetime Default Getdate()
 );
 
+Create Table Logs (
+Id int primary key identity,
+Name_Procedure varchar(50),
+Message Varchar(MAX),
+Created_On Datetime default getdate()
+);
 
+Create Table Audit_Logs(
+Id Int Primary Key Identity,
+Id_User Int Not Null,
+Action_Name Varchar (50) Not null,
+Object_Name Varchar (50) Not null,
+Params_Send Varchar (Max) Not null,
+Log_Date Datetime Default getdate()
+);
 
+Create Table [Status] (
+Id int primary key identity,
+Name Varchar(100) Not null,
+Description Varchar(100) Not null,
+Created_On Datetime default Getdate()
+);
 
 
 Alter Table User_Role
@@ -107,3 +127,11 @@ Foreign Key (Id_Sec_Object) References Sec_Object (Id);
 Alter Table Company
 Add Constraint FK_Role_Detail_Id_Suscription
 Foreign Key (Id_Suscription) References Suscription (Id);
+
+Alter Table Audit_Logs
+Add Constraint FK_Audit_Logs_Id_User
+Foreign Key (Id_User) References [User] (Id);
+
+Alter Table [User]
+Add Constraint FK_Users_Id_Company
+Foreign Key (Id_Company) References Company (Id);
