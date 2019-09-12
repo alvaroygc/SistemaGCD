@@ -135,3 +135,7 @@ Foreign Key (Id_User) References [User] (Id);
 Alter Table [User]
 Add Constraint FK_Users_Id_Company
 Foreign Key (Id_Company) References Company (Id);
+
+Alter Table Company
+Add Constraint FK_Status_Id_Status
+Foreign Key (Id_Status) References [Status] (Id);
