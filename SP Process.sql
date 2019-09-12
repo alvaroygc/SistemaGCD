@@ -1,6 +1,6 @@
 Select  * From Process
 
-Create Procedure SP_Insert_Status
+Create Procedure SP_Insert_Process
 
 @Name Varchar(60),
 @Description Varchar (50)
@@ -9,7 +9,7 @@ Create Procedure SP_Insert_Status
 
 	Begin Transaction
 			Begin Try
-	    	Insert Into Status (Name,Description)
+	    	Insert Into Process(Name,Description)
 			Values (@Name, @Description)
 		Commit
 		End Try
@@ -20,7 +20,7 @@ Create Procedure SP_Insert_Status
 		End Catch
 
 
-Create Procedure SP_Delete_Status
+Create Procedure SP_Delete_Process
 
 @Id int
 
@@ -28,7 +28,7 @@ Create Procedure SP_Delete_Status
 
 	Begin Transaction
 			Begin Try
-	    	Delete From Status where Id=@Id
+	    	Delete From Process where Id=@Id
 		Commit
 		End Try
 		Begin Catch
@@ -37,13 +37,13 @@ Create Procedure SP_Delete_Status
 		Print 'Error en la Transaccion'
 		End Catch
 
-Create Procedure SP_Select_Status
+Create Procedure SP_Select_Process
 
  As
 
 	Begin Transaction
 			Begin Try
-	    	Select Id, Name, Description, Created_On From Status
+	    	Select Id, Name, Description, Created_On From Process
 		Commit
 		End Try
 		Begin Catch
@@ -53,7 +53,7 @@ Create Procedure SP_Select_Status
 		End Catch
 
 
-Create Procedure SP_Update_Status
+Create Procedure SP_Update_Process
 
 @Id Int,
 @Name Varchar (60),
@@ -63,7 +63,7 @@ Create Procedure SP_Update_Status
 
 	Begin Transaction
 			Begin Try
-	    	Update Status Set Name=@Name, Description=@Description Where Id=@Id
+	    	Update Process Set Name=@Name, Description=@Description Where Id=@Id
 		Commit
 		End Try
 		Begin Catch

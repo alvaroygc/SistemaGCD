@@ -2,7 +2,6 @@
 {
     public class Case
     {
-
         public const string selectAll = "SP_Select_Case";
         public const string getById = "SP_SelectById_Case";
         public const string Create = "SP_Insert_Case";
