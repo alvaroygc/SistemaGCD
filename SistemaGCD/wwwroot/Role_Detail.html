@@ -2,18 +2,18 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Sistema GCD</title>
     <link rel="stylesheet" href="css/vendor/w3.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
 </head>
 <body class="w3-light-grey">
     <div id="app">
-        <top-header></top-header>
         <sidebar></sidebar>
-        <div class="w3-main" style="margin-left:300px; margin-top:43px;">
+        <div class="w3-main" style="margin-left:20px; margin-top:43px;">
             <!--Main Content-->
             <div class="w3-container">
                 <h1>Detalle Role</h1>
-                <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
+                <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
                 <table class="w3-table w3-bordered">
                     <thead>
                         <tr>
@@ -28,7 +28,7 @@
                             <td>{{item.role_Name}}</td>
                             <td>{{item.sec_Object_Name}}</td>
                             <td>{{item.allowed_Action_Name}}</td>
-                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="DeleteDetails(item)">Eliminar</button></td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteDetails(item)">Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -39,7 +39,7 @@
                         <span v-on:click="closeModal" class="w3-button w3-display-topright">&times;</span>
                         <br>
                         <br>
-                        <div class="w3-container w3-blue">
+                        <div class="w3-container w3-black">
                             <h2>{{gridDetails}} Detalle de Roles</h2>
                         </div>
                         <br>
@@ -52,7 +52,7 @@
                         </select>
 
                         <br>
-                        Objecto
+                        Objeto
                         <br>
                         <select class="w3-select w3-border" v-model="selectedAction.id_Sec_Object">
                             <option v-for="option in Objects" v-bind:value="option.id">
@@ -60,7 +60,7 @@
                             </option>
                         </select>
                         <br>
-                        Objecto
+                        Accion
                         <br>
                         <select class="w3-select w3-border" v-model="selectedAction.id_Allowed_Action">
                             <option v-for="option in Allowed_Actions" v-bind:value="option.id">
@@ -76,11 +76,11 @@
                         </li>
                     </ul>
                     <br>
-                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large"
+                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large"
                             v-on:click="saveEdit">
                         Guardar
                     </button>
-                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="closeModal">Cancelar</button>
+                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="closeModal">Cancelar</button>
                     <br>
                 </div>
                 <br>
@@ -90,9 +90,10 @@
         </div>
     </div>
     <script src="js/vendor/vue.js"></script>
-    <script src="js/Componets/top-header.js"></script>
     <script src="js/Componets/sidebar.js"></script>
     <script src="js/Componets/footers.js"></script>
     <script src="js/Role_Detail.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
 </body>
 </html>

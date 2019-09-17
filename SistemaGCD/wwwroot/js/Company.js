@@ -61,9 +61,11 @@
             app.modalVisibility = "block"
             app.editModCompany = mode
             if (mode == "EDIT") {
+                app.gridCompany = "Editar";
                 app.selectedCompany = Object.assign({}, action)
             }
             if (mode == "NEW") {
+                app.gridCompany = "Nueva";
                 app.selectedCompany = { name: '', description: '' }
             }
         },
@@ -73,18 +75,25 @@
 
         validateActionInput: function () {
             app.inputErrors = []
-            if (app.selectedCompany.name == '') {
+           if (app.selectedCompany.name == '') {
                 app.inputErrors.push('El nombre no debe ser vacío!')
             }
             if (app.selectedCompany.description == '') {
                 app.inputErrors.push('Ingrese una descripcion!');
             }
+            if (app.selectedCompany.phone == '' || isNaN(app.selectedCompany.phone)) {
+                app.inputErrors.push('Ingrese un numero de Telefono o Campo Valida!');
+            }
+            if (app.selectedCompany.email == '') {
+                app.inputErrors.push('Ingrese un Email!!');
+            }
+          
         },
 
         saveEdit: function () {
             var res = ''
             //validar
-           // app.validateActionInput();
+            app.validateActionInput();
             if (app.inputErrors.length > 0) {
                 return;
             }

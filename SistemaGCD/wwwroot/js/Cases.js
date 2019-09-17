@@ -60,9 +60,11 @@
             app.modalVisibility = "block"
             app.editModCases = mode
             if (mode == "EDIT") {
+                app.gridCases = "Editar";
                 app.selectedCases = Object.assign({}, action)
             }
             if (mode == "NEW") {
+                app.gridCases = "Nuevo";
                 app.selectedCases = { name: '', description: '' }
             }
         },

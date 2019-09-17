@@ -2,18 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Acciones Permitidas</title>
+    <title>Sistema GCD</title>
     <link rel="stylesheet" href="css/vendor/w3.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
 </head>
 <body class="w3-light-grey">
     <div id="app">
         <top-header></top-header>
         <sidebar></sidebar>
-        <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+        <div class="w3-main" style="margin-left:20px;margin-top:43px;">
             <!--MAIN CONTENT-->
             <div class="w3-container">
                 <h1>Companias</h1>
-                <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
+                <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
                 <table class="w3-table w3-bordered">
                     <thead>
                         <tr>
@@ -22,22 +23,22 @@
                             <th>Nombre</th>
                             <th>Direccion</th>
                             <th>Telefono</th>
-                         
+
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="item in companys">
-                            
+
                             <td>{{item.suscription_Name}}</td>
                             <td>{{item.email}}</td>
                             <td>{{item.name}}</td>
                             <td>{{item.address}}</td>
                             <td>{{item.phone}}</td>
-                            
-                            
-                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="openEditModal(item,'EDIT')">Editar</button></td>
-                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="DeleteCompany(item)">Eliminar</button></td>
+
+
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal(item,'EDIT')">Editar</button></td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteCompany(item)">Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,8 +49,8 @@
                         <span v-on:click="closeModal" class="w3-button w3-display-topright">&times;</span>
                         <br>
                         <br>
-                        <div class="w3-container w3-blue">
-                            <h2>{{gridCompany}} Companias</h2>
+                        <div class="w3-container w3-black">
+                            <h2>{{gridCompany}} Compania</h2>
                         </div>
                         <br>
                         Suscripcion
@@ -64,12 +65,12 @@
                         Nombre
                         <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedCompany.name" />
                         Direccion
-                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedCompany.address" />
+                        <input class="w3-input w3-border w3-light-grey" type="email" pattern="[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" v-model="selectedCompany.address" />
                         <br>
                         Telefono
                         <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedCompany.phone" />
                         Contraseña
-                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedCompany.pass" />
+                        <input class="w3-input w3-border w3-light-grey" type="password" v-model="selectedCompany.pass" />
                     </div>
                     <ul>
                         <li v-for="error in inputErrors">
@@ -77,11 +78,11 @@
                         </li>
                     </ul>
                     <br>
-                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large"
+                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large"
                             v-on:click="saveEdit">
                         Guardar
                     </button>
-                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="closeModal">Cancelar</button>
+                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="closeModal">Cancelar</button>
                     <br>
                 </div>
                 <br>
@@ -92,9 +93,10 @@
         </div>
     </div>
     <script src="js/vendor//vue.js"></script>
-    <script src="js/Componets/top-header.js"></script>
     <script src="js/Componets/sidebar.js"></script>
     <script src="js/Componets/footers.js"></script>
     <script src="js/Company.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
 </body>
 </html>

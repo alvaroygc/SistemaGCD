@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <title>Objetos</title>
     <link rel="stylesheet" href="css/vendor/w3.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
 </head>
 <body class="w3-light-grey">
     <div id="app">
-        <top-header></top-header>
         <sidebar></sidebar>
-        <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+        <div class="w3-main" style="margin-left:20px;margin-top:43px;">
             <!--MAIN CONTENT-->
             <div class="w3-container">
                 <h1>Objetos</h1>
-                <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
+                <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
                 <table class="w3-table w3-bordered">
                     <thead>
                         <tr>
@@ -30,8 +30,8 @@
                             <td>{{item.name}}</td>
                             <td>{{item.description}}</td>
                             <td>{{item.created_On}}</td>
-                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="openEditModal(item,'EDIT')">Editar</button></td>
-                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="DeleteSec_Objects(item)">Eliminar</button></td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal(item,'EDIT')">Editar</button></td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteSec_Objects(item)">Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -42,8 +42,8 @@
                         <span v-on:click="closeModal" class="w3-button w3-display-topright">&times;</span>
                         <br>
                         <br>
-                        <div class="w3-container w3-blue">
-                            <h2>{{gridSec_Objects}} Objetos</h2>
+                        <div class="w3-container w3-black">
+                            <h2>{{gridSec_Objects}} Objeto</h2>
                         </div>
                         <br>
                         Nombre
@@ -58,11 +58,11 @@
                         </li>
                     </ul>
                     <br>
-                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large"
+                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large"
                             v-on:click="saveEdit">
                         Guardar
                     </button>
-                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-blue w3-round-large" v-on:click="closeModal">Cancelar</button>
+                    <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="closeModal">Cancelar</button>
                     <br>
                 </div>
                 <br>
@@ -73,9 +73,10 @@
         </div>
     </div>
     <script src="js/vendor//vue.js"></script>
-    <script src="js/Componets/top-header.js"></script>
     <script src="js/Componets/sidebar.js"></script>
     <script src="js/Componets/footers.js"></script>
     <script src="js/Sec_Objects.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
 </body>
 </html>

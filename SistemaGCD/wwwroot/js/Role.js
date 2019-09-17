@@ -41,9 +41,11 @@
             app.modalVisibility = "block"
             app.editModRoles = mode
             if (mode == "EDIT") {
+                app.gridRoles = "Editar";
                 app.selectedRoles = Object.assign({}, action)
             }
             if (mode == "NEW") {
+                app.gridRoles = "Nuevo";
                 app.selectedRoles = { name: '', description: '' }
             }
         },

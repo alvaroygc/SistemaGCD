@@ -41,9 +41,11 @@
             app.modalVisibility = "block"
             app.editModObject_type = mode
             if (mode == "EDIT") {
+                app.gridObject_type = "Editar";
                 app.selectedObject_type = Object.assign({}, action)
             }
             if (mode == "NEW") {
+                app.gridObject_type = "Nuevo";
                 app.selectedObject_type = { name: '', description: '' }
             }
         },

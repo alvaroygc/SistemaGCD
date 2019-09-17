@@ -99,6 +99,18 @@ Description Varchar(100) Not null,
 Created_On Datetime default Getdate()
 );
 
+Create Table Token (
+Id int primary key identity,
+Token varchar (50) not null,
+Expired_dt datetime not null,
+Status varchar (25) not null,
+Created_dt datetime not null,
+Id_User int not null
+);
+
+Alter Table Token 
+add constraint FK_Token_Id_User
+Foreign Key (Id_User) References [User] (Id)
 
 Alter Table User_Role
 Add Constraint FK_User_Role_User

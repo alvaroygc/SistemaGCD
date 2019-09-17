@@ -59,6 +59,9 @@
             if (app.selectedSuscription.description == '') {
                 app.inputErrors.push('Ingrese una descripcion!');
             }
+            if (app.selectedSuscription.number_Case == '' || isNaN(app.selectedSuscription.number_Case)) {
+                app.inputErrors.push('Ingrese un numero de Casos o Campo Valida!');
+            }
         },
 
         saveEdit: function () {

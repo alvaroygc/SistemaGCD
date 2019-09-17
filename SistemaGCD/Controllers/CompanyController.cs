@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaGCD.Models.DataAccess;
 using SistemaGCD.Models.Entities;
+using SistemaGCD.Security;
 
 namespace SistemaGCD.Controllers
 {

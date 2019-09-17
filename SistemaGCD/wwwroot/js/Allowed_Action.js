@@ -41,9 +41,11 @@
             app.modalVisibility = "block"
             app.editModAction = mode
             if (mode == "EDIT") {
+                app.gridAction = "Editar";
                 app.selectedAction = Object.assign({}, action)
             }
             if (mode == "NEW") {
+                app.gridAction = "Nuevo";
                 app.selectedAction = { name: '', description: '' }
             }
         },
