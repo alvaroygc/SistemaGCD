@@ -5,6 +5,8 @@ namespace SistemaGCD.Models.Entities
     public class Users
     {
         public int Id { get; set; }
+        public int Id_Company { get; set; }
+        public string Company_Name { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }

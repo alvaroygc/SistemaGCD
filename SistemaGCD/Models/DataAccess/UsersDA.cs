@@ -35,7 +35,7 @@ namespace SistemaGCD.Models.DataAccess
         public int create(Users users)
         {
             db.Connection.Open();
-            int result = db.Connection.Execute(StoreProcedureNames.Users.Create, new {Name = users.Name, Email = users.Email, Description = users.Description, Pass = users.Pass}, commandType: CommandType.StoredProcedure);
+            int result = db.Connection.Execute(StoreProcedureNames.Users.Create, new {Id_Company=users.Id_Company, Name = users.Name, Email = users.Email, Description = users.Description, Pass = users.Pass}, commandType: CommandType.StoredProcedure);
             db.Connection.Close();
             return result;
         }
