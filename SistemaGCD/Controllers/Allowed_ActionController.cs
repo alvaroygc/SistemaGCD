@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SistemaGCD.Models.DataAccess;
 using SistemaGCD.Models.Entities;
 
+
 namespace SistemaGCD.Controllers
 {
     [Route("api/[controller]")]

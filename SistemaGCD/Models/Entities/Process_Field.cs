@@ -8,7 +8,7 @@ namespace SistemaGCD.Models.Entities
         public int Id_Process { get; set; }
         public string Process_Name { get; set; }
         public string Name { get; set; }
-        public int Archive { get; set; }
+        public string Archive { get; set; }
         public int Id_Data_Type { get; set; }
         public string Data_Type_Name { get; set; }
     }

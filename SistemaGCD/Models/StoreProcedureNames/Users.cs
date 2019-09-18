@@ -8,6 +8,7 @@ namespace SistemaGCD.Models.StoreProcedureNames
         public const string Create = "SP_Insert_User";
         public const string Update = "SP_Update_User";
         public const string Delete = "SP_Delete_User";
+        public const string Login = "SP_Login";
 
     }
 }

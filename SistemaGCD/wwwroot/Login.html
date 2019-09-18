@@ -15,19 +15,19 @@
         <br />
         <section class="container" style=" background-color: dimgray">
             <section class="login-form">
-                <form method="post" action="" role="login">
+               
                     <center>
                         <h2>Sistema de Gestion de Casos y Documentos</h2>
                     </center>
                     <h5>Ingrese Correo</h5>
-                    <input type="email" name="email" placeholder="Email" required class="form-control input-lg" />
+                    <input type="email" name="email" placeholder="Email" required class="form-control input-lg" v-model="selectedUsers.email" />
                     <h5>Ingrese Contraseña</h5>
-                    <input type="password" name="password" placeholder="Password" required class="form-control input-lg" />
+                    <input type="password" name="password" placeholder="Password" required class="form-control input-lg"  v-model="selectedUsers.pass"/>
                     <button type="submit" name="go" class="btn btn-lg btn-primary btn-block" v-on:click="saveEdit">Iniciar Sesion</button>
                     <div>
-                        <a href="#">Crear Cuenta</a> 
+                        <a href="#">Crear Cuenta</a>
                     </div>
-                </form>
+                
                 <div class="form-links">
                     <a href="#">www.website.com</a>
                 </div>

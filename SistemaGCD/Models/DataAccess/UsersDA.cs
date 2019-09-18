@@ -55,5 +55,12 @@ namespace SistemaGCD.Models.DataAccess
             db.Connection.Close();
             return result;
         }
+
+        public int login(Users users) {
+            db.Connection.Open();
+            int result = db.Connection.Execute(StoreProcedureNames.Users.Login, new { Email = users.Email, Password = users.Pass }, commandType: CommandType.StoredProcedure);
+            db.Connection.Close();
+            return result;
+        }
     }
 }

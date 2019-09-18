@@ -5,6 +5,7 @@
     <title>Sistema GCD</title>
     <link rel="stylesheet" href="css/vendor/w3.css">
     <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+
 </head>
 <body class="w3-light-grey">
     <div id="app">
@@ -12,25 +13,24 @@
         <div class="w3-main" style="margin-left:20px;margin-top:43px;">
             <!--MAIN CONTENT-->
             <div class="w3-container">
-                <h1>Usuarios</h1>
+                <h1>Procesos </h1>
                 <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
                 <table class="w3-table w3-bordered">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Correo</th>
-                            <th>Compania</th>
+                            <th>Id</th>
+                            <th>Caso</th>
+                            <th>Nombre de Procesos</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in users">
-
+                        <tr v-for="item in process">
+                            <td>{{item.id}}</td>
+                            <td>{{item.case_Name}}</td>
                             <td>{{item.name}}</td>
-                            <td>{{item.email}}</td>
-                            <td>{{item.company_Name}}</td>
                             <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal(item,'EDIT')">Editar</button></td>
-                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteCompany(item)">Eliminar</button></td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteAction(item)">Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -42,19 +42,19 @@
                         <br>
                         <br>
                         <div class="w3-container w3-black">
-                            <h2>{{gridUsers}} Usuario</h2>
+                            <h2>{{gridProcess}} Proceso </h2>
                         </div>
+                        <br>
+                        Caso
+                        <select class="w3-select w3-border" v-model="selectedProcess.id_Case">
+                            <option v-for="option in cases" v-bind:value="option.id">
+                                {{ option.name }}
+                            </option>
+                        </select>
                         <br>
                         Nombre
-                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedUsers.name" />
-                        Email
-                        <input class="w3-input w3-border w3-light-grey" type="email" v-model="selectedUsers.email" />
-                        Contraseña
-                        <input class="w3-input w3-border w3-light-grey" type="password" v-model="selectedUsers.pass" />
-                        <br>
-                        Compania
-                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedUsers.company_Name" />
-                        </div>
+                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedProcess.name" />
+                    </div>
                     <ul>
                         <li v-for="error in inputErrors">
                             {{error}}
@@ -78,9 +78,8 @@
     <script src="js/vendor//vue.js"></script>
     <script src="js/Componets/sidebar.js"></script>
     <script src="js/Componets/footers.js"></script>
-    <script src="js/User.js"></script>
+    <script src="js/Process.js"></script>
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/sha256.js"></script>
 </body>
 </html>

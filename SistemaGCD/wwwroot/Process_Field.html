@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema GCD</title>
+    <link rel="stylesheet" href="css/vendor/w3.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+
+</head>
+<body class="w3-light-grey">
+    <div id="app">
+        <sidebar></sidebar>
+        <div class="w3-main" style="margin-left:20px;margin-top:43px;">
+            <!--MAIN CONTENT-->
+            <div class="w3-container">
+                <h1>Campos de Proceso </h1>
+                <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal({},'NEW')">Agregar</button>
+                <table class="w3-table w3-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Proceso</th>
+                            <th>Nombre de Campo</th>
+                            <th>Tipo de Dato</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in process_field">
+                            <td>{{item.id}}</td>
+                            <td>{{item.process_Name}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.data_Type_Name}}</td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal(item,'EDIT')">Editar</button></td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteAction(item)">Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="w3-modal" v-bind:style="{display: modalVisibility}">
+                <div class="w3-modal-content">
+                    <div class="w3-container">
+                        <span v-on:click="closeModal" class="w3-button w3-display-topright">&times;</span>
+                        <br>
+                        <br>
+                        <div class="w3-container w3-black">
+                            <h2>{{gridProcess_Field}} Proceso </h2>
+                        </div>
+                        <br>
+                        Proceso
+                        <select class="w3-select w3-border" v-model="selectedProcess_Field.id_Process">
+                            <option v-for="option in process" v-bind:value="option.id">
+                                {{ option.name }}
+                            </option>
+                        </select>
+                        <br>
+                        Nombre
+                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedProcess_Field.name" />
+                        Tipo de Dato
+                        <select class="w3-select w3-border" v-model="selectedProcess_Field.id_Data_Type">
+                            <option v-for="option in data_types" v-bind:value="option.id">
+                                {{ option.name }}
+                            </option>
+                        </select>
+                        <br />
+                        <br />
+                        Adjuntar Archivo
+                        <br />
+                        
+                        <select v-model="selectedProcess_Field.archive">
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
+
+                        </select>
+                        <!--    <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedProcess_Field.archive" />-->
+                        <ul>
+                            <li v-for="error in inputErrors">
+                                {{error}}
+                            </li>
+                        </ul>
+                        <br>
+                        <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large"
+                                v-on:click="saveEdit">
+                            Guardar
+                        </button>
+                        <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="closeModal">Cancelar</button>
+                        <br>
+                    </div>
+        <br>
+    </div>
+
+    <!--END MAIN CONTENT-->
+                        <footers></footers>
+                    </div>
+    </div>
+        </div>
+    <script src="js/vendor/vue.js"></script>
+    <script src="js/Componets/sidebar.js"></script>
+    <script src="js/Componets/footers.js"></script>
+    <script src="js/Process_Field.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+</body>
+</html>
