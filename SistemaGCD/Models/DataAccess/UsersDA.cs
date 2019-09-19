@@ -56,11 +56,29 @@ namespace SistemaGCD.Models.DataAccess
             return result;
         }
 
-        public int login(Users users) {
+        public List<Login_Model> Login(string email, string pass)
+        { 
             db.Connection.Open();
-            int result = db.Connection.Execute(StoreProcedureNames.Users.Login, new { Email = users.Email, Password = users.Pass }, commandType: CommandType.StoredProcedure);
+            var result = db.Connection.Query<Login_Model>(StoreProcedureNames.Users.Login, new { Email = email, Pass = pass }, commandType: CommandType.StoredProcedure);
+            db.Connection.Close();
+            return result.ToList();
+        }
+
+        public List<Token> Token(string text)
+        {
+            db.Connection.Open();
+            var result = db.Connection.Query<Token>(StoreProcedureNames.Users.Token_Verify , new { text=text }, commandType: CommandType.StoredProcedure);
+            db.Connection.Close();
+            return result.ToList();
+        }
+
+        public int create_Token(Token token)
+        {
+            db.Connection.Open();
+            int result = db.Connection.Execute(StoreProcedureNames.Users.Token, new { text =token.text, expired_dt=token.expired_dt, status=token.status, created_dt =token.created_dt, id_User = token.id_User }, commandType: CommandType.StoredProcedure);
             db.Connection.Close();
             return result;
         }
+
     }
 }

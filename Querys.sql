@@ -101,12 +101,14 @@ Created_On Datetime default Getdate()
 
 Create Table Token (
 Id int primary key identity,
-Token varchar (50) not null,
+Text varchar (50) not null,
 Expired_dt datetime not null,
 Status varchar (25) not null,
 Created_dt datetime not null,
 Id_User int not null
 );
+
+drop table Token
 
 Alter Table Token 
 add constraint FK_Token_Id_User

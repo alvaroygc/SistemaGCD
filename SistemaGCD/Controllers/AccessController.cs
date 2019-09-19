@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaGCD.Models.DataAccess;
 using SistemaGCD.Models.Entities;
+using SistemaGCD.Security;
 
 namespace SistemaGCD.Controllers
 {
@@ -19,19 +20,52 @@ namespace SistemaGCD.Controllers
         public AccessController(IServiceProvider serviceProvider) {
             provider = serviceProvider;
         }
-
+        
         [HttpPost]
         [Route("Login")]
         public ActionResult<object> Login(Users users) {
 
             AppDB db = provider.GetRequiredService<AppDB>();
             UsersDA usersDA = new UsersDA(db);
-            var res = usersDA.login(users);
+            var res = usersDA.Login(users.Email, users.Pass);
+            MailService mail = new MailService();
+            Token token = new Token
+            {
+                text = Guid.NewGuid().ToString(),
+                created_dt = DateTime.Now,
+                expired_dt = DateTime.Now.AddHours(TOKEN_EXP_HOURS),
+                status = "ACTIVE",
+                id_User = users.Id
+            };
+            var re = usersDA.create_Token(token);
+            mail.SendMail(users.Email, token.text);
             return new
             {
                 result = res
             };
         }
-  
+
+        [HttpPost]
+        [Route("Token")]
+        public ActionResult<object> Token (Token token)
+        {
+
+            AppDB db = provider.GetRequiredService<AppDB>();
+            UsersDA usersDA = new UsersDA(db);
+            var res = usersDA.Token(token.text);
+            if (res.Count <= 0) {
+                return "error ";
+            }
+
+            if (res[0].status == "USED" && res[0].expired_dt < DateTime.Now) {
+                return "error de Estado o Expit";
+            }
+
+            return new
+            {
+                result = res
+            };
+        }
+
     }
 }

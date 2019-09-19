@@ -28,7 +28,7 @@ namespace SistemaGCD.Controllers
             return allowed_Action.getAll();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [Route("getById")]
         public ActionResult<List<Allowed_Action>> Get (int id)
         {

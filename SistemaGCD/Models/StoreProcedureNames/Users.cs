@@ -9,6 +9,8 @@ namespace SistemaGCD.Models.StoreProcedureNames
         public const string Update = "SP_Update_User";
         public const string Delete = "SP_Delete_User";
         public const string Login = "SP_Login";
+        public const string Token = "SP_Insert_Token";
+        public const string Token_Verify = "SP_Select_Token";
 
     }
 }

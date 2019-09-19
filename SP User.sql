@@ -90,3 +90,43 @@ As
 		End Catch;
 
 Execute SP_SelectById_User 1
+
+
+Select * from Token;
+
+Create Procedure SP_Insert_Login
+@Text Varchar(60),
+@Expired_dt datetime,
+@Status Varchar(15),
+@Created_dt datetime,
+@Id_User int
+
+ As
+
+	Begin Transaction
+			Begin Try
+	    	Insert Into [Token] ([Text],Expired_dt,[Status],Created_dt,Id_User)
+			Values (@Text,@Expired_dt,@Status,@Created_dt,@Id_User)
+		Commit
+		End Try
+
+		Begin Catch
+		Print 'Error en la Transaccion'
+		Rollback
+		End Catch
+
+Create procedure SP_Select_Token
+
+@Text varchar(60)
+
+As
+
+	Begin Transaction 
+		Begin Try
+			Select Id, [Text], Expired_dt, [Status] from Token where [Text]=@Text
+			commit
+		End Try
+		Begin Catch 
+		Insert Into Logs (Name_Procedure, Message) Values (object_name(@@PROCID),ERROR_MESSAGE())
+		Print 'Error en la Transaccion'
+		End Catch;
