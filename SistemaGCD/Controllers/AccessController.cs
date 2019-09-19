@@ -28,17 +28,23 @@ namespace SistemaGCD.Controllers
             AppDB db = provider.GetRequiredService<AppDB>();
             UsersDA usersDA = new UsersDA(db);
             var res = usersDA.Login(users.Email, users.Pass);
+
             MailService mail = new MailService();
+
             Token token = new Token
             {
                 text = Guid.NewGuid().ToString(),
                 created_dt = DateTime.Now,
                 expired_dt = DateTime.Now.AddHours(TOKEN_EXP_HOURS),
-                status = "ACTIVE",
-                id_User = users.Id
+                id_User = res[0].Id,
+                status = "ACTIVE"
+                
             };
+
             var re = usersDA.create_Token(token);
+
             mail.SendMail(users.Email, token.text);
+
             return new
             {
                 result = res
@@ -58,8 +64,9 @@ namespace SistemaGCD.Controllers
             }
 
             if (res[0].status == "USED" && res[0].expired_dt < DateTime.Now) {
-                return "error de Estado o Expit";
+                return "Token Usado o Expirado";
             }
+            var ST_Token = usersDA.Desative_Token(token);
 
             return new
             {

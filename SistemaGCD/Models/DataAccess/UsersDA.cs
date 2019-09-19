@@ -80,5 +80,12 @@ namespace SistemaGCD.Models.DataAccess
             return result;
         }
 
+        public int Desative_Token(Token token) {
+            db.Connection.Open();
+            int result = db.Connection.Execute(StoreProcedureNames.Users.Desactive_Token, new { text = token.text }, commandType: CommandType.StoredProcedure);
+            db.Connection.Close();
+            return result;
+        }
+
     }
 }

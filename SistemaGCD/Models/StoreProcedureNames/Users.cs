@@ -11,6 +11,7 @@ namespace SistemaGCD.Models.StoreProcedureNames
         public const string Login = "SP_Login";
         public const string Token = "SP_Insert_Token";
         public const string Token_Verify = "SP_Select_Token";
+        public const string Desactive_Token = "SP_Update_Token";
 
     }
 }

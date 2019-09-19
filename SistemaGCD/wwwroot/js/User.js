@@ -66,7 +66,7 @@
         saveEdit: function () {
             var res = ''
             //validar
-            app.validateActionInput();
+            //app.validateActionInput();
             if (app.inputErrors.length > 0) {
                 return;
             }
@@ -75,12 +75,14 @@
             }
             if (app.editModUsers == "NEW") {
                 res = '/api/users/create'
+                app.selectedUsers.id_Company = localStorage.getItem("Id_Company")
             }
             fetch(res, {
                 method: 'post',
                 headers: {
                     "Content-Type": "application/json"
                 },
+                
                 body: JSON.stringify(app.selectedUsers)
             })
                 .then(function (r) {
@@ -88,14 +90,14 @@
                 })
                 .then(function (data) {
                     app.closeModal()
-                    app.getActions()
+                    app.getUsers()
                 })
                 .catch(function (error) {
-                    console.log('Request failed', error);
+                    console.log('Request failed', error)
                 });
         },
 
-        DeleteAction: function (action) {
+        DeleteUser: function (action) {
             app.modalVisibility = "block"
             app.selectedUsers = Object.assign({}, action)
             Vue.nextTick(function () {
@@ -117,7 +119,7 @@
                     .then(function (data) {
                         //alert(data.result)
                         app.closeModal()
-                        app.getActions()
+                        app.getUsers()
                     })
                     .catch(function (error) {
                         console.log('Request failed', error);

@@ -7,9 +7,9 @@ namespace SistemaGCD.Models.Entities
 {
     public class Login_Model
     {
-        public string Email { get; set; }
-        public string Name { get; set; }
         public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
         public int Id_Company { get; set; }
     }
 }

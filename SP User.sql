@@ -130,3 +130,26 @@ As
 		Insert Into Logs (Name_Procedure, Message) Values (object_name(@@PROCID),ERROR_MESSAGE())
 		Print 'Error en la Transaccion'
 		End Catch;
+
+		Select * From Token;
+
+Create Procedure SP_Update_Token
+
+@text Varchar(60)
+
+ As
+
+	Begin Transaction
+			Begin Try
+	    	UPDATE Token
+				SET Status = 'USED'
+			WHERE Text=@text;
+		Commit
+		End Try
+
+		Begin Catch
+		Print 'Error en la Transaccion'
+		Rollback
+		End Catch
+
+Execute SP_Update_Token '0ff9be64-0760-45a4-b888-1446262d6e8d'

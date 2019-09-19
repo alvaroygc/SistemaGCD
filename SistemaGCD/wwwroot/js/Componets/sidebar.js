@@ -23,15 +23,15 @@
       <a class="navbar-brand" href="#">Sistema de Gestion de Casos y Documentos </a>
     </div>
     <ul class="nav navbar-nav">
-      <li ><a href="#">Principal</a></li>
+      <li ><a href="Principal.html">Principal</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Casos <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="Cases.html">Crear Caso</a></li>
           <li><a href="Process.html">Crear Proceso</a></li>
           <li><a href="Process_Field.html">Crear Campos</a></li>
         </ul>
-      <li><a href="#">Reportes</a></li>
-      <li><a href="#">Auditoria</a></li>
+      <li><a href="Report.html">Reportes</a></li>
+      <li><a href="Audit.html">Auditoria</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimiento <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="User.html">Usuarios</a></li>
@@ -45,7 +45,7 @@
           <li><a href="Data_Type.html">Tipo de Datos</a></li>
         </ul>
       </li>
-      <li><a href="#">Cerrar Session</a></li>
+      <li><a href="Logout.html">Cerrar Session</a></li>
     </ul>
     
   </div>

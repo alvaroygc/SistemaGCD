@@ -30,7 +30,7 @@
                             <td>{{item.email}}</td>
                             <td>{{item.company_Name}}</td>
                             <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="openEditModal(item,'EDIT')">Editar</button></td>
-                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteCompany(item)">Eliminar</button></td>
+                            <td> <button class="w3-btn w3-white w3-border w3-border-gray w3-text-black w3-round-large" v-on:click="DeleteUser(item)">Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,9 +52,10 @@
                         Contraseña
                         <input class="w3-input w3-border w3-light-grey" type="password" v-model="selectedUsers.pass" />
                         <br>
-                        Compania
-                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedUsers.company_Name" />
-                        </div>
+                        Descripcion
+                        <input class="w3-input w3-border w3-light-grey" type="text" v-model="selectedUsers.description" />
+                    </div>
+
                     <ul>
                         <li v-for="error in inputErrors">
                             {{error}}
@@ -75,12 +76,11 @@
             <footers></footers>
         </div>
     </div>
+    
     <script src="js/vendor//vue.js"></script>
     <script src="js/Componets/sidebar.js"></script>
     <script src="js/Componets/footers.js"></script>
     <script src="js/User.js"></script>
-    <script src="js/vendor/jquery.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/sha256.js"></script>
-</body>
+    <script src="js/vendor/jquery.min.js"></script>.
+    
 </html>

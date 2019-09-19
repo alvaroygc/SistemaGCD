@@ -36,7 +36,7 @@
                     return r.json()
                  })
                 .then(function (data) {
-                    alert(JSON.stringify(data))
+                   
                     if (!data.result[0].id) {
                         alert('Error al iniciar sesion');
                         return;
@@ -46,10 +46,9 @@
                         return;
                     }
                     window.location.href = "/Token.html"
-                    sessionStorage.setItem("Id", data.result[0].id);
-                    sessionStorage.setItem("Name", data.result[0].name);
-                    sessionStorage.setItem("Id_Company", data.result[0].id_Company);
-                   
+                    localStorage.setItem("Id", data.result[0].id);
+                    localStorage.setItem("Name", data.result[0].name);
+                    localStorage.setItem("Id_Company", data.result[0].id_Company);                   
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
@@ -80,7 +79,7 @@
                         alert('Error al iniciar sesion');
                         return;
                     }
-                    window.location.href = "/Role.html"
+                    window.location.href = "/Principal.html"
                    
 
                 })
