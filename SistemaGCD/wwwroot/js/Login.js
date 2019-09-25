@@ -1,4 +1,5 @@
-﻿var app = new Vue({
+﻿//var cryptobject;
+var app = new Vue({
     el: '#app',
     data: {
         modalVisibility: 'none',
@@ -19,11 +20,28 @@
         var self = this;
     },
 
-    methods: {      
+    //computed: {
+    //    decrypted: function () {
+    //        return (this.encrypted ? CryptoJS.AES.decrypt(this.encrypted.str, this.decryptsecret).toString(CryptoJS.enc.Latin1) : 'fred');
+    //    }
+    //},
+
+    methods: {  
+
+        //encrypt: function () {
+        //    cryptobject = CryptoJS.AES.encrypt(app.selectedUsers.pass, this.encryptsecret);
+        //    this.encrypted = {
+        //        key: cryptobject.key + '', // don't send this
+        //        iv: cryptobject.iv + '', // don't send this
+        //        salt: cryptobject.salt + '', // don't send this
+        //        ciphertext: cryptobject.ciphertext + '', // don't send this
+        //        str: cryptobject + '' // send or store this
+        //    }
+        //},
+
         login: function () {      
-            var res = ''                
-                res = './api/Access/Login'
-            
+            var res = ''
+            res = './api/Access/Login'
             fetch(res, {
                 method: 'post',
                 headers: {
@@ -45,15 +63,19 @@
                         alert('Error al iniciar sesion');
                         return;
                     }
+                    alert(JSON.stringify(data));
+                    sessionStorage.setItem("Id", data.result[0].id);
+                    sessionStorage.setItem("Name", data.result[0].name);
+                    sessionStorage.setItem("Id_Company", data.result[0].id_Company);     
                     window.location.href = "/Token.html"
-                    localStorage.setItem("Id", data.result[0].id);
-                    localStorage.setItem("Name", data.result[0].name);
-                    localStorage.setItem("Id_Company", data.result[0].id_Company);                   
+                                       
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
                 });
-        },  
+        }, 
+
+       
         tokenVerify: function () {
             var res = ''
             res = './api/Access/Token'

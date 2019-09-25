@@ -1,5 +1,6 @@
 ﻿var app = new Vue({
     el: '#app',
+    mixins: [AutMixin],
     data: {
         modalVisibility: 'none',
         disabledButton: false,
@@ -94,6 +95,9 @@
             }
             if (app.editModCases == "NEW") {
                 res = '/api/Cases/create'
+                app.selectedCases.id_Company = sessionStorage.getItem("Id_Company")
+                app.selectedCases.created_By = sessionStorage.getItem("Id")
+
             }
             fetch(res, {
                 method: 'post',

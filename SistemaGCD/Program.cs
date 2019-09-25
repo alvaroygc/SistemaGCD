@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +20,14 @@ namespace SistemaGCD
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .UseKestrel(options => {
+                // options.Listen(IPAddress.Loopback, 85);
+                options.Listen(IPAddress.Loopback, 86, listenOptions =>
+                {
+                    listenOptions.UseHttps(Path.Combine(System.AppContext.BaseDirectory, "cacert.pfx"), "C@lder0n");
+                });
+            })
+
                 .UseStartup<Startup>();
     }
 }

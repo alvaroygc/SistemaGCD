@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html id="html" style=" background-color:dimgray">
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema GCD</title>
+    <link rel="stylesheet" href="css/vendor/w3.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+</head>
+
+<body class="w3-light-grey">
+    <div id="app" style=" background-color:dimgray">
+        <section class="container" style=" background-color: dimgray">
+            <section class="login-form">
+                <center>
+                    <h1>Sistema de Gestion de Casos y Documentos</h1>
+                    <h2>Registro</h2>
+                </center>
+                Suscripcion
+                <br>
+                <select class="w3-select w3-border" v-model="selectedCompany.id_Suscription">
+                    <option v-for="option in suscriptions" v-bind:value="option.id">
+                        {{ option.name }}
+                    </option>
+                </select>
+                <h4>Ingrese Correo</h4>
+                <input type="email" name="email" placeholder="Email" required class="form-control input-lg" v-model="selectedCompany.email" />
+                <h4>Nombre</h4>
+                <input type="email" name="email" placeholder="Email" required class="form-control input-lg" v-model="selectedCompany.name" />
+                <h4>Direccion</h4>
+                <input type="email" name="email" placeholder="Email" required class="form-control input-lg" v-model="selectedCompany.address" />
+                <h4>Telefono</h4>
+                <input type="email" name="email" placeholder="Email" required class="form-control input-lg" v-model="selectedCompany.phone" />
+                <h4>Contraseña</h4>
+                <input type="password" name="password" placeholder="Password" required class="form-control input-lg" v-model="selectedCompany.pass" />
+                <br />
+                <button type="submit" name="go" class="btn btn-lg btn-primary btn-block" v-on:click="saveEdit">Registrar</button>
+                <div>
+                    <a href="/Login.html">Tiene Cuenta</a>
+                </div>
+
+                <div class="form-links">
+                    <a href="#">www.website.com</a>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <script src="js/vendor//vue.js"></script>
+    <script src="js/Componets/sidebar.js"></script>
+    <script src="js/Componets/footers.js"></script>
+    <script src="js/Register.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+
+</body>
+</html>

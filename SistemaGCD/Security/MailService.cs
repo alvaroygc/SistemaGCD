@@ -8,10 +8,10 @@ namespace SistemaGCD.Security
 {
     public class MailService
     {
-        string SMTP_SERVER = "smtp.gmail.com";
-        string SMTP_USER = "mobile.apps.notifications@gmail.com";
-        string SMTP_PASS = "s3guroDispositivo";
-        string SMTP_ADDRESS = "mobile.apps.notifications@gmail.com";
+        string SMTP_SERVER = "email-smtp.us-east-1.amazonaws.com";
+        string SMTP_USER = "AKIAX7HVXRTG4JVNZILW";
+        string SMTP_PASS = "BDHvg0ICFiPLc/N7ByEc/hU7k46OMieRVYqnKhGxrvN+";
+        string SMTP_ADDRESS = "alvarogudiel@gmail.com";
 
         public string SendMail(string toAddress, string token)
         {

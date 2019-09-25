@@ -46,8 +46,15 @@ namespace SistemaGCD
             }
 
             app.UseHttpsRedirection();
+
+            DefaultFilesOptions options = new DefaultFilesOptions();
+
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("login.html");
+            app.UseDefaultFiles(options);            
             app.UseMvc();
             app.UseStaticFiles();
+           
         }
     }
 }

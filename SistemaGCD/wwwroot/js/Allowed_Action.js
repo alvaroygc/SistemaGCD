@@ -1,5 +1,6 @@
 ﻿var app = new Vue({
     el: '#app',
+    mixins: [AutMixin],
     data: {
         modalVisibility: 'none',
         disabledButton: false,
@@ -8,6 +9,7 @@
         editModAction: '',
         gridAction: '',
         inputErrors: []
+        
     },
 
     mounted: function () {
@@ -21,10 +23,12 @@
 
     methods: {
         getActions: function () {
+
             fetch('./api/Allowed_action/getall')
                 .then(function (response) {
-                    if (response.status !== 200) {
+                    if (response.status !== 200 ) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
+                        
                         return;
                     }
                     response.json().then(function (data) {
@@ -95,6 +99,8 @@
                 });
         },
 
+
+        
         DeleteAction: function (action) {
             app.modalVisibility = "block"
             app.selectedAction = Object.assign({}, action)

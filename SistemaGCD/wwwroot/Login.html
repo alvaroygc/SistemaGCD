@@ -15,18 +15,20 @@
         <br />
         <section class="container" style=" background-color: dimgray">
             <section class="login-form">
-                    <center>
-                        <h2>Sistema de Gestion de Casos y Documentos</h2>
-                    </center>
-                    <h5>Ingrese Correo</h5>
-                    <input type="email" name="email" placeholder="Email" required class="form-control input-lg" v-model="selectedUsers.email" />
-                    <h5>Ingrese Contraseña</h5>
-                    <input type="password" name="password" placeholder="Password" required class="form-control input-lg"  v-model="selectedUsers.pass"/>
-                    <button type="submit" name="go" class="btn btn-lg btn-primary btn-block" v-on:click="login">Iniciar Sesion</button>
-                    <div>
-                        <a href="#">Crear Cuenta</a>
-                    </div>
+                <center>
+                    <h1>Sistema de Gestion de Casos y Documentos</h1>
+                </center>
+                <h3>Ingrese Correo</h3>
+                <input type="email" name="email" placeholder="Email" required class="form-control input-lg" v-model="selectedUsers.email" />
+                <h3>Ingrese Contraseña</h3>
+                <input type="password" name="password" placeholder="Password" required class="form-control input-lg" v-model="selectedUsers.pass" />
+                <br />
+                <button type="submit" name="go" class="btn btn-lg btn-primary btn-block" v-on:click="login">Iniciar Sesion</button>
                 
+                <div>
+                    <a href="/Register.html">Crear Cuenta</a>
+                </div>
+
                 <div class="form-links">
                     <a href="#">www.website.com</a>
                 </div>
@@ -40,5 +42,6 @@
     <script src="js/Login.js"></script>
     <script src="js/vendor/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    
 </body>
 </html>

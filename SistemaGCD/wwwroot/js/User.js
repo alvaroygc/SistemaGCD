@@ -1,5 +1,6 @@
 ﻿var app = new Vue({
     el: '#app',
+    mixins: [AutMixin],
     data: {
         modalVisibility: 'none',
         disabledButton: false,
@@ -75,7 +76,7 @@
             }
             if (app.editModUsers == "NEW") {
                 res = '/api/users/create'
-                app.selectedUsers.id_Company = localStorage.getItem("Id_Company")
+                app.selectedUsers.id_Company = sessionStorage.getItem("Id_Company")
             }
             fetch(res, {
                 method: 'post',

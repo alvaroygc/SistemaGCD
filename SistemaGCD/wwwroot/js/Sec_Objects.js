@@ -1,5 +1,6 @@
 ﻿var app = new Vue({
     el: '#app',
+    mixins: [AutMixin],
     data: {
         modalVisibility: 'none',
         disabledButton: false,
