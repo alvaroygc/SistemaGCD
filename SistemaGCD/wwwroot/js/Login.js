@@ -9,7 +9,8 @@ var app = new Vue({
         editModUsers: '',
         gridUsers: '',
         inputErrors: [],
-        secondFactor: false
+        secondFactor: false,
+        encryptsecret: 'S3curit!P@55'
     },
 
     mounted: function () {
@@ -28,30 +29,37 @@ var app = new Vue({
 
     methods: {  
 
-        //encrypt: function () {
-        //    cryptobject = CryptoJS.AES.encrypt(app.selectedUsers.pass, this.encryptsecret);
-        //    this.encrypted = {
-        //        key: cryptobject.key + '', // don't send this
-        //        iv: cryptobject.iv + '', // don't send this
-        //        salt: cryptobject.salt + '', // don't send this
-        //        ciphertext: cryptobject.ciphertext + '', // don't send this
-        //        str: cryptobject + '' // send or store this
-        //    }
-        //},
+        encrypt: function () {
+            cryptobject = CryptoJS.AES.encrypt(app.selectedUsers.pass, this.encryptsecret);
+            this.encrypted = {
+                key: cryptobject.key + '', // don't send this
+                iv: cryptobject.iv + '', // don't send this
+                salt: cryptobject.salt + '', // don't send this
+                ciphertext: cryptobject.ciphertext + '', // don't send this
+                str: cryptobject + '' // send or store this
+            }
+        },
 
         login: function () {      
             var res = ''
             res = './api/Access/Login'
+           // this.encrypt()
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedUsers)
+                //    {
+                //    email: app.selectedusers.email,
+                //    pass: this.encrypted.str
+                //})
             })
              
                 .then(function (r) {
                     return r.json()
+                    alert(r);
                  })
                 .then(function (data) {
                    
@@ -63,7 +71,6 @@ var app = new Vue({
                         alert('Error al iniciar sesion');
                         return;
                     }
-                    alert(JSON.stringify(data));
                     sessionStorage.setItem("Id", data.result[0].id);
                     sessionStorage.setItem("Name", data.result[0].name);
                     sessionStorage.setItem("Id_Company", data.result[0].id_Company);     
@@ -72,6 +79,7 @@ var app = new Vue({
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
+                    alert('Contraseña o Correo Incorrecto');
                 });
         }, 
 
@@ -83,7 +91,8 @@ var app = new Vue({
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedUsers)
             })
@@ -92,8 +101,7 @@ var app = new Vue({
                     return r.json()
                 })
                 .then(function (data) {
-                    alert(JSON.stringify(data))
-                    if (!data.result[0].id) {
+                        if (!data.result[0].id) {
                         alert('Error al iniciar sesion');
                         return;
                     }
@@ -107,6 +115,7 @@ var app = new Vue({
                 })
                 .catch(function (error) {
                     console.log('Request failed', error);
+                    alert('Token Incorrecto')
                 });
         }
     }

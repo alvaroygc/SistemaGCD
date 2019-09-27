@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SistemaGCD.Models.DataAccess;
+using SistemaGCD.Security;
 
 namespace SistemaGCD
 {
@@ -27,8 +28,12 @@ namespace SistemaGCD
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options=> {
+                options.Filters.Add(typeof(LogFilter));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient(_ => new AppDB(Environment.GetEnvironmentVariable("ConnectionString")));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

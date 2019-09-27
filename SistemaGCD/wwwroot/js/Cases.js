@@ -24,7 +24,12 @@
 
     methods: {
         getCases: function () {
-            fetch('./api/Cases/getall')
+            fetch('./api/Cases/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -41,7 +46,12 @@
         },
 
         getStatus: function () {
-            fetch('./api/Status/getall')
+            fetch('./api/Status/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -102,7 +112,8 @@
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedCases)
             })
@@ -130,7 +141,8 @@
                 fetch('/api/Cases/Delete', {
                     method: 'post',
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "LoggedUser": sessionStorage.getItem("Id")
                     },
                     body: JSON.stringify(app.selectedCases)
                 })

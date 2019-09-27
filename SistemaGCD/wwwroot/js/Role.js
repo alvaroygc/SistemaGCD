@@ -22,7 +22,12 @@
 
     methods: {
         getRoles: function () {
-            fetch('./api/roles/getall')
+            fetch('./api/roles/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -80,7 +85,8 @@
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedRoles)
             })
@@ -108,7 +114,8 @@
                 fetch('/api/roles/Delete', {
                     method: 'post',
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "LoggedUser": sessionStorage.getItem("Id")
                     },
                     body: JSON.stringify(app.selectedRoles)
                 })

@@ -8,7 +8,8 @@
         selectedCompany: {},
         editModCompany: '',
         gridCompany: '',
-        inputErrors: []
+        inputErrors: [],
+        encryptsecret: 'S3curit!P@55'
     },
 
     mounted: function () {
@@ -22,8 +23,23 @@
     },
 
     methods: {
-           getSuscription: function () {
-            fetch('./api/Suscription/getall')
+        encrypt: function () {
+            cryptobject = CryptoJS.AES.encrypt(app.selectedUsers.pass, this.encryptsecret);
+            this.encrypted = {
+                key: cryptobject.key + '', // don't send this
+                iv: cryptobject.iv + '', // don't send this
+                salt: cryptobject.salt + '', // don't send this
+                ciphertext: cryptobject.ciphertext + '', // don't send this
+                str: cryptobject + '' // send or store this
+            }
+        },
+        getSuscription: function () {
+            fetch('./api/Suscription/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -73,7 +89,8 @@
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedCompany)
             })

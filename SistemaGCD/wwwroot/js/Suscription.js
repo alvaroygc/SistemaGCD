@@ -22,7 +22,12 @@
 
     methods: {
         getSuscriptions: function () {
-            fetch('./api/Suscription/getall')
+            fetch('./api/Suscription/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -81,7 +86,8 @@
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedSuscription)
             })
@@ -109,7 +115,8 @@
                 fetch('/api/Suscription/Delete', {
                     method: 'post',
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "LoggedUser": sessionStorage.getItem("Id")
                     },
                     body: JSON.stringify(app.selectedSuscription)
                 })

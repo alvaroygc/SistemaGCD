@@ -22,7 +22,7 @@ namespace SistemaGCD
             WebHost.CreateDefaultBuilder(args)
             .UseKestrel(options => {
                 // options.Listen(IPAddress.Loopback, 85);
-                options.Listen(IPAddress.Loopback, 86, listenOptions =>
+                options.Listen(new IPAddress(new Byte[]{ 0, 0, 0, 0 }), 443, listenOptions =>
                 {
                     listenOptions.UseHttps(Path.Combine(System.AppContext.BaseDirectory, "cacert.pfx"), "C@lder0n");
                 });

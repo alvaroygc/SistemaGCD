@@ -28,7 +28,12 @@
 
     methods: {
         getDetails: function () {
-            fetch('./api/Role_Detail/getall')
+            fetch('./api/Role_Detail/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -47,7 +52,12 @@
 
 
         getRole: function () {
-            fetch('./api/Roles/getall')
+            fetch('./api/Roles/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -63,7 +73,12 @@
                 });
         },
         getSec_Objects: function () {
-            fetch('./api/sec_objects/getall')
+            fetch('./api/sec_objects/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -80,7 +95,12 @@
         },
 
         getAllowed_Actions: function () {
-            fetch('./api/allowed_action/getall')
+            fetch('./api/allowed_action/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -136,7 +156,8 @@
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedAction)
             })
@@ -164,7 +185,8 @@
                 fetch('/api/Role_Detail/delete', {
                     method: 'post',
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "LoggedUser": sessionStorage.getItem("Id")
                     },
                     body: JSON.stringify(app.selectedAction)
                 })

@@ -24,7 +24,12 @@
 
     methods: {
         getProcess: function () {
-            fetch('./api/Process/getall')
+            fetch('./api/Process/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -41,7 +46,12 @@
         },
 
         getCases: function () {
-            fetch('./api/Cases/getall')
+            fetch('./api/Cases/getall', {
+                method: 'GET',
+                headers: {
+                    'LoggedUser': sessionStorage.getItem('Id')
+                }
+            })
                 .then(function (response) {
                     if (response.status !== 200) {
                         console.log('Looks like there was a problem. Status Code: ' + response.status);
@@ -99,7 +109,8 @@
             fetch(res, {
                 method: 'post',
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "LoggedUser": sessionStorage.getItem("Id")
                 },
                 body: JSON.stringify(app.selectedProcess)
             })
@@ -127,7 +138,8 @@
                 fetch('/api/Process/Delete', {
                     method: 'post',
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "LoggedUser": sessionStorage.getItem("Id")
                     },
                     body: JSON.stringify(app.selectedProcess)
                 })

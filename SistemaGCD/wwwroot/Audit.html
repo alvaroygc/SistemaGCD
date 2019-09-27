@@ -14,11 +14,31 @@
             <!--MAIN CONTENT-->
             <div class="w3-container">
                 <h1>Auditoria</h1>
-
-
+                
+                <table class="w3-table w3-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Usuario</th>
+                            <th>Accion</th>
+                            <th>Query</th>
+                            <th>Fecha</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in audit">
+                            <td>{{item.id}}</td>
+                            <td>{{item.user_Names}}</td>
+                            <td>{{item.action}}</td>
+                            <td>{{item.param}}</td>
+                            <td>{{item.log_Date}}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-
+            
             <!--END MAIN CONTENT-->
             <footers></footers>
         </div>

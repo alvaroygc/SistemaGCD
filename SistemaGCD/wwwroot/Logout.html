@@ -1,10 +1,44 @@
 ﻿<!DOCTYPE html>
-<html>
+<html id="html" style=" background-color:dimgray">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Sistema GCD</title>
+    <link rel="stylesheet" href="css/vendor/w3.css" />
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 </head>
-<body>
+
+<body class="w3-light-grey">
+    <div id="app" style=" background-color:dimgray">
+        <br />
+        <br />
+        <br />
+        <section class="container" style=" background-color: dimgray">
+            <section class="login-form">
+                <center>
+                    <h1>Sistema de Gestion de Casos y Documentos</h1>
+                </center>
+                
+                <button type="submit" name="go" class="btn btn-lg btn-primary btn-block" v-on:click="DestroySession">Cerrar Sesion</button>
+
+                <div>
+                    <a href="/Register.html">Crear Cuenta</a>
+                </div>
+
+                <div class="form-links">
+                    
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <script src="js/vendor/vue.js"></script>
+    <script src="js/vendor/crypto-js.js"></script>
+    <script src="js/Componets/top-header.js"></script>
+    <script src="js/Componets/footers.js"></script>
+    <script src="js/Logout.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>
